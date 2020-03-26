@@ -45,11 +45,11 @@ function handleServer(req, res) {
   });
 
   // Router
-  if (req.url === "/api") {
+  if (req.url === "/api/") {
     api_get(req, res);
-  } else if (req.url.indexOf("/api") > -1 && req.method === "POST") {
+  } else if (req.url.indexOf("/api/") > -1 && req.method === "POST") {
     api_id_post(req, res);
-  } else if (req.url.indexOf("/api") > -1 && req.method === "GET") {
+  } else if (req.url.indexOf("/api/") > -1 && req.method === "GET") {
     api_id_get(req, res);
   } else {
     res.end("Sem Rota");

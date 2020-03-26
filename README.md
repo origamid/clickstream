@@ -263,15 +263,15 @@ function handleServer(req, res) {
 
   // Router
   // Se tiver /api apenas no URL, ativa a função api_get
-  if (req.url === "/api") {
+  if (req.url === "/api/") {
     api_get(req, res);
 
     // Se tiver /api apenas no URL e o método for POST ativa api_id_post
-  } else if (req.url.indexOf("/api") > -1 && req.method === "POST") {
+  } else if (req.url.indexOf("/api/") > -1 && req.method === "POST") {
     api_id_post(req, res);
 
     // Se tiver /api apenas no URL e o método for GET ativa api_id_get
-  } else if (req.url.indexOf("/api") > -1 && req.method === "GET") {
+  } else if (req.url.indexOf("/api/") > -1 && req.method === "GET") {
     api_id_get(req, res);
   } else {
     res.end("Sem Rota");
@@ -305,7 +305,7 @@ const postData = (url, data) => {
 const getData = async (url, total) => {
   // Puxa o URL inicial e transforma em JSON,
   // O URL possui uma lista de arquivos salvos no servidor
-  const dataResponse = await fetch(url);
+  const dataResponse = await fetch(url + "/");
   const dataJson = await dataResponse.json();
 
   // Da lista salva, seleciona os últimos TOTAL de itens da ARRAY, com o slice
