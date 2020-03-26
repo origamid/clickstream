@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clickstream</title>
+
+  <link rel="shortcut icon" href="./favicon.ico" />
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="container">
+  <h1>Clickstream Data</h1>
+  <hr>
+  <code>
+    <p>import Clickstream from "./clickstream/Clickstream.js";
+    <p>const clickstream = new Clickstream("http://127.0.0.1:3001/api", 10);
+    <p>clickstream.track();
+    <p>clickstream.live();
+  </code>
+  <script src="./js/clickstream/dependencies/heatmap.min.js"></script>
+  <script type="module" src="./js/script.js"></script>
+</body>
+
+</html>

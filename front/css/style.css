@@ -1,0 +1,15 @@
+@import "./base.css";
+
+p {
+  margin-bottom: 0.5rem;
+}
+
+canvas {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+body {
+  height: 2000px;
+}
