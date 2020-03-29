@@ -6,7 +6,10 @@ const DATA_DIR = path.join(__dirname, "data");
 function api_get(req, res) {
   fs.readdir(DATA_DIR, (err, files) => {
     if (err) throw err;
-    res.write(JSON.stringify(files.map(f => f.replace(".json", ""))));
+    const jsonFiles = files
+      .filter(f => f.slice(f.length - 5) === ".json")
+      .map(f => f.replace(".json", ""));
+    res.write(JSON.stringify(jsonFiles));
     res.end();
   });
 }
@@ -29,11 +32,13 @@ function api_id_post(req, res) {
   req.on("data", chunk => data.push(chunk));
   req.on("end", () => {
     const body = Buffer.concat(data).toString();
-    fs.writeFile(file, body, err => {
-      if (err) throw err;
-      res.write(body);
-      res.end();
-    });
+    if (body.length > 2) {
+      fs.writeFile(file, body, err => {
+        if (err) throw err;
+        res.write(body);
+        res.end();
+      });
+    }
   });
 }
 
